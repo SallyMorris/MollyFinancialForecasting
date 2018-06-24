@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/base}">
+<head th:include="layout/base :: headerfragment">
+    <title id="pageTitle">Category</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <script src="/js/category/datatable.js"></script>
+    <div class="">
+
+        <div class="sixteen wide column">
+            <div id="tbl_menu">
+                <h2 th:utext="#{i18n.category_menu_list_caption}">Placeholder: Manage &nbsp;<strong>Countries</strong></h2>
+                <span class="buttons-pod">
+                    <button class="ui button yellow" id="button_delete"><i class="fas fa-minus-circle"></i> Delete</button>
+                    <a class="ui button green" href="/category/add"><i class="fas fa-plus-circle"></i> Add New Category</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="sixteen wide column">
+            <br />
+            <div class="ui small message success hidden" id="message_delete_item_successful">
+                <span th:text="#{i18n.action_alert_item_delete_successful}"></span>
+                <br>
+            </div>
+            <div class="ui small message error hidden" id="message_delete_item_error">
+                <span th:text="#{i18n.action_alert_item_delete_error}"></span>
+                <br>
+            </div>
+                    <table class="ui celled table" id="datatable" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select_all"></th>
+                                <th>Code</th>
+                                <th>Category</th>
+                                <th>Created</th>
+                                <th>Modified</th>
+                                <th align="right">Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+
+            $('#select_all').change(function () {
+                var checkboxes = $('#datatable').find(':checkbox').not($(this));
+                checkboxes.prop('checked', $(this).is(':checked'));
+            });
+
+            function getSelectedIds(){
+                var values = [];
+                $('input[name="ids[]"]:checked').each(function() {
+                    values.push($(this).val());
+                });
+                return values;
+            }
+
+            $('#button_delete').click(function () {
+                $('#modal_delete_item_text_placeholder').html($("#category_delete_question_selected_categories").html());
+                $('#button-modal-delete-item')
+                    .api({
+                        action: 'del selected categories',
+                        method: 'POST',
+                        data: {
+                            ids: getSelectedIds()
+                        },
+                        onSuccess: function (response) {
+                            $("#message_delete_item_error").hide();
+                            $("#message_delete_item_successful").show();
+                            setTimeout(function () {
+                                $("#message_delete_item_successful").hide();
+                            }, 10000)
+                            $("#modal_delete_item").modal('hide');
+                            $('#datatable').DataTable().ajax.reload();
+                            console.log(response);
+                        },
+                        onFailure: function (response) {
+                            $("#message_delete_item_error").show();
+                            $("#message_delete_item_successful").hide();
+                            setTimeout(function () {
+                                $("#message_delete_item_error").hide();
+                            }, 10000)
+                            $("#modal_delete_item").modal('hide');
+                            $('#datatable').DataTable().ajax.reload();
+                            console.log(response);
+                        }
+                    })
+                ;
+                $('#modal_delete_item')
+                    .modal('show');
+
+            });
+        });
+
+    </script>
+
+    <span id="category_delete_question_selected_categories" style="display: none" th:text="#{i18n.category_delete_question_selected_categories}"></span>
+    <div class="ui modal" id="modal_delete_item">
+        <i class="close icon"></i>
+        <div class="header" th:text="#{i18n.category_delete_item}">
+            Placeholder: Delete Country ?
+        </div>
+        <div class="image content">
+            <div class="description">
+                <p><span th:text="#{i18n.category_delete_question}">Are you sure you wish to delete</span>: <br><strong id="modal_delete_item_text_placeholder"></strong> ?</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui cancel button">Cancel</div>
+            <div class="ui button red" id="button-modal-delete-item">DELETE</div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

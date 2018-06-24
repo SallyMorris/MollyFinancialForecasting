@@ -1,0 +1,81 @@
+#tbl_menu{
+    width: 100%;
+    height: 65px;
+    background: #4a5b7b;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+#tbl_menu h2 {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0;
+}
+
+#tbl_menu .buttons-pod{
+    margin-left: auto;
+}
+
+.btn-transparent {
+    background: transparent !important;
+}
+
+#pagination {
+    display: flex;
+    align-items: center;
+}
+
+#pagination .pagination-pod{
+    margin-left: auto;
+}
+
+.table thead {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+#modal_delete_item {
+    width: 400px;
+    height: 250px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+div.field {
+    margin-top: 5px !important;
+}
+
+#scrollable-area {
+    height: 400px !important;
+    display: block;
+    overflow: auto;
+}
+
+.entry {
+}
+
+.hidden{
+    display: none !important;
+}
+
+#datatable td {
+    color: #4863A0;
+}
