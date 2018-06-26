@@ -1,13 +1,12 @@
 package com.molly.forecasting.naivebayes;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Data {
-
-	static String[][] stock ={
+	
+	static String[][] stock = {
 			{"DayOfWeek","Price Direction"},
 			{"Saturday","DOWN"},
 			{"Sunday","UP"},

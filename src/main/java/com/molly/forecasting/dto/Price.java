@@ -6,7 +6,8 @@ public class Price {
 	private Float high;
 	private Float low;
 	private Float close;
-	
+	private String dayName;
+	private String priceDirection;
 	
 	public String getDate() {
 		return date;
@@ -38,6 +39,19 @@ public class Price {
 	public void setClose(Float close) {
 		this.close = close;
 	}
+	public String getDayName() {
+		return dayName;
+	}
+	public void setDayName(String dayName) {
+		this.dayName = dayName;
+	}
+	public String getPriceDirection() {
+		return priceDirection;
+	}
+	public void setPriceDirection(String priceDirection) {
+		this.priceDirection = priceDirection;
+	}
+	
 	
 		
 }

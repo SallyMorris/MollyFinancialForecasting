@@ -45,7 +45,7 @@ public class DataSet {
 		return condProb;
 	}
 	private static String getResultStr(DataSet dataSet,HashMap<String, String> instanceMap,HashMap<String, String> logMap,double prob,String featureValue) {
-		StringBuffer resultSB = new StringBuffer();
+		StringBuffer resultSB = new StringBuffer(dataSet+"\n");
 		String instanceStr = getInstanceStr(dataSet, instanceMap);
 		resultSB.append("P("+featureValue+"|"+instanceStr+") = (P("+featureValue+")");
 		IntStream.range(0, dataSet.data[0].length-1).forEach(i -> resultSB.append("*P("+instanceMap.get(dataSet.data[0][i])+"|"+featureValue+")"));
@@ -80,7 +80,7 @@ public class DataSet {
 		return returnValue;
 	}
 	
-	static String getInstanceStr (DataSet dataSet,HashMap<String, String> instanceMap) {
+	public static String getInstanceStr (DataSet dataSet,HashMap<String, String> instanceMap) {
 		StringBuffer instanceSB = new StringBuffer();
 		IntStream.range(0, dataSet.data[0].length-2).forEach(i -> instanceSB.append(instanceMap.get(dataSet.data[0][i]+" ,")));
 		return (instanceSB.append(instanceMap.get(dataSet.data[0][dataSet.data[0].length-2])+">")).toString();
@@ -100,14 +100,10 @@ public class DataSet {
 			});
 			stringBuffer.append("\n");
 			if(row == 0) {
-				IntStream.range(0, 108).forEach(i -> stringBuffer.append("-"));
+				IntStream.range(0, 40).forEach(i -> stringBuffer.append("-"));
 				stringBuffer.append("\n");
 			}
 		});
 		return stringBuffer.toString();
 	}
-	
-	
-	
-	
 }
