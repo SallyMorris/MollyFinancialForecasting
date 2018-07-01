@@ -1,6 +1,5 @@
 package com.molly.forecasting.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +22,11 @@ public class PriceRestController {
 	public List<Price> getPriceDataByticker(String ticker) {
 		return priceService.getPriceByticker(ticker);
 	}
-	
+
 	@RequestMapping(value = "/priceForecasting", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> forecaste(String ticker,String dayName) {
+	public List<String> forecaste(String ticker, String dayName) {
 		return priceService.forecastPrice(ticker, dayName);
 	}
-	
-	
-	
+
 }

@@ -4,14 +4,15 @@ $(document).ready( function () {
 	var dayName = getTodayName();
 	var data;
 	var result;
-	var ticker = $('#ticker').val();
+	var ticker;
 	$("#forecasting-question").html('what is the probability that today’s price will increase given that today is '+dayName+' ?');
 	var idForPriceTable = 1;
 	$( '#ticker' ).keypress(function( event ) {
 	  if ( event.which == 13 ) {
-		var DateTable = '<table id="AgencyTable' + idForPriceTable + '" class="display"><thead><tr><th>Date</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Day Name</th><th>Price Direction</th></tr></thead></table>';
-		$('#tableToShow').empty();
-		$(DateTable).appendTo('#tableToShow');
+		ticker = $('#ticker').val();
+		var DateTable = '<table id="PriceTable' + idForPriceTable + '" class="display nowrap" style="width:100%"><thead><tr><th>Date</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Day Name</th><th>Price Direction</th></tr></thead></table>';
+		$('#priceDataTable').empty();
+		$(DateTable).appendTo('#priceDataTable');
 	    
 	    $.ajaxSetup({
             async: false
@@ -22,8 +23,8 @@ $(document).ready( function () {
         $.ajaxSetup({
             async: true
         });
-        var table = $('#AgencyTable' + idForPriceTable + '').DataTable({
-	    	"bInfo": false,
+        var table = $('#PriceTable' + idForPriceTable + '').DataTable({
+        	"bInfo": false,
             "bPaginate": false,
             "data": data,
             "columns": [
@@ -34,6 +35,10 @@ $(document).ready( function () {
                 {"data": "close"},
                 {"data": "dayName"},
                 {"data": "priceDirection"}
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                 { extend: 'excel', filename: ticker+' Prices' ,title : ticker+' Prices'}, { extend: 'pdf', filename: ticker+' Prices' ,title :ticker+' Prices'},{ extend: 'print', title :ticker+' Prices'}
             ],
             "order": [[ 0, "desc" ]]
        });

@@ -2,10 +2,10 @@ package com.molly.forecasting.dto;
 
 public class Price {
 	private String date;
-	private Float open;
-	private Float high;
-	private Float low;
-	private Float close;
+	private float open;
+	private float high;
+	private float low;
+	private float close;
 	private String dayName;
 	private String priceDirection;
 	
@@ -15,28 +15,28 @@ public class Price {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public Float getOpen() {
+	public float getOpen() {
 		return open;
 	}
-	public void setOpen(Float open) {
+	public void setOpen(float open) {
 		this.open = open;
 	}
-	public Float getHigh() {
+	public float getHigh() {
 		return high;
 	}
-	public void setHigh(Float high) {
+	public void setHigh(float high) {
 		this.high = high;
 	}
-	public Float getLow() {
+	public float getLow() {
 		return low;
 	}
-	public void setLow(Float low) {
+	public void setLow(float low) {
 		this.low = low;
 	}
-	public Float getClose() {
+	public float getClose() {
 		return close;
 	}
-	public void setClose(Float close) {
+	public void setClose(float close) {
 		this.close = close;
 	}
 	public String getDayName() {

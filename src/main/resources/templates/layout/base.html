@@ -1,10 +1,107 @@
 <!DOCTYPE HTML>
 <html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfragment">
+<title th:include=":: #pageTitle"></title>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>Price</title>
+
+<!-- JQUERY -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- DataTables.net -->
+<script type="text/javascript" src="/datatables/js/jquery.dataTables.js"></script>
+<script type="text/javascript"
+	src="/datatables/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="/datatables/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="/datatables/js/jszip.min.js"></script>
+<script type="text/javascript" src="/datatables/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="/datatables/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="/datatables/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="/datatables/js/buttons.print.min.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="/datatables/css/buttons.datatables.css">
+<link rel="stylesheet" type="text/css"
+	href="/datatables/css/jquery.dataTables.css">
+
+
+<!-- VENDOR CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{/vendor/font-awesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/vendor/linearicons/style.css}">
+<link rel="stylesheet"
+	th:href="@{/vendor/chartist/css/chartist-custom.css}">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/multi-select.css}" />
+
+<!-- GOOGLE FONTS -->
+<link th:href="@{/css/google_font.css}" rel="stylesheet">
+
+<!-- ICONS -->
+<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
 
 </head>
 <body>
-	
+	<!-- NAVBAR -->
+	<nav th:fragment="navfragment"
+		class="navbar navbar-default navbar-fixed-top">
+		<div class="brand">
+			<a href="#"><img src="/img/logo-dark.png" alt="Klorofil Logo"
+				class="img-responsive logo"></a>
+		</div>
+		<div class="container-fluid">
+			<div class="navbar-btn">
+				<button type="button" class="btn-toggle-fullwidth">
+					<i class="lnr lnr-arrow-left-circle"></i>
+				</button>
+			</div>
+
+
+			<div id="navbar-menu">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><img src="/img/user.jpg"
+							class="img-circle" alt="Avatar"> <span>Sally</span> <i
+							class="icon-submenu lnr lnr-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="lnr lnr-user"></i> <span>My
+										Profile</span></a></li>
+							<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END NAVBAR -->
+	<!-- LEFT SIDEBAR -->
+	<div th:fragment="sidebarfragment" id="sidebar-nav" class="sidebar">
+		<div class="sidebar-scroll">
+			<nav>
+				<ul class="nav">
+					<li><a href="/price/list" class=""><i
+							class="lnr lnr-chart-bars"></i> <span>Forecasting Prices</span></a></li>
+					<li><a href="/statement/list" class=""><i
+							class="lnr lnr-chart-bars"></i> <span>Standardized Financial</span></a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<footer th:fragment="footerfragment">
+		<div class="container-fluid">
+			<p class="copyright">
+				&copy; 2018 <a href="javascript:void(0)">Molly financial
+					Forecasting</a>. All Rights Reserved.
+			</p>
+		</div>
+	</footer>
 </body>
 </html>

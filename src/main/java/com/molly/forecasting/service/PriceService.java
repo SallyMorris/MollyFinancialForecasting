@@ -10,19 +10,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.molly.forecasting.dto.Price;
 import com.molly.forecasting.dto.PriceDTO;
-import com.molly.forecasting.naivebayes.Data;
 import com.molly.forecasting.naivebayes.DataSet;
 
 import java.util.*;
-import java.io.*;
-import java.text.BreakIterator;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.*;
-import java.time.temporal.*;
-import java.time.format.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,19 +22,19 @@ public class PriceService {
 
 	private static Logger logger = LogManager.getLogger();
 
-	private final static String auth = "Basic MmIxMzNlZTE4NWQxNGJmMDI1NDU4YmRlMjM0OGViMzE6MTU4Nzg3OTg4NjdkNjdlMTEzOTdkZDAyNTg3YmIwNTc=";
-
 	/*
-	 * Get Data from API URI: https://api.intrinio.com
-	 */
+	 * Get Data from API URI: https://api.intrinio.com/prices
+	*/
 	public List<Price> getPriceByticker(String ticker) {
 		RestTemplate restTemplate = new RestTemplate();
 		PriceDTO priceDTO = new PriceDTO();
 		String pricesUrl = "https://api.intrinio.com/prices?identifier=" + ticker;
+		// don't forget to remove it
+		AuthenticateIntrinioService.setAuth("2b133ee185d14bf025458bde2348eb31", "15878798867d67e11397dd02587bb057");
 		logger.info("GET: " + pricesUrl);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		httpHeaders.set("Authorization", auth);
+		httpHeaders.set("Authorization",AuthenticateIntrinioService.auth);
 		HttpEntity<String> requestEntity = new HttpEntity<>("Headers", httpHeaders);
 		ResponseEntity<PriceDTO> responseEntity = restTemplate.exchange(pricesUrl, HttpMethod.GET, requestEntity,
 				PriceDTO.class);
@@ -75,13 +66,6 @@ public class PriceService {
 		for (int i = 0; i < stockList.length-1; i++) {			
 			stockList[i+1]= new String[]{ priceList.get(i).getDayName(), priceList.get(i).getPriceDirection() };
 		}
-		
-		String[][] stock = { { "DayOfWeek", "Price Direction" }, { "Saturday", "DOWN" }, { "Sunday", "UP" },
-				{ "Monday", "UP" }, { "Tuesday", "DOWN" }, { "Wednesday", "DOWN" }, { "Thursday", "UP" },
-				{ "Friday", "UP" }, { "Saturday", "DOWN" }, { "Sunday", "UP" }, { "Monday", "DOWN" },
-				{ "Tuesday", "DOWN" }, { "Wednesday", "DOWN" }, { "Thursday", "UP" }, { "Friday", "UP" },
-				{ "Saturday", "DOWN" }, { "Sunday", "UP" }, { "Monday", "DOWN" }, { "Tuesday", "UP" },
-				{ "Wednesday", "DOWN" }, { "Thursday", "UP" }, { "Friday", "DOWN" }, { "Saturday", "DOWN" }, };
 		DataSet dataSet = new DataSet(stockList);
 		System.out.println("[DATASET]\n" + dataSet);
 		String dayOfWeek = dayName;
