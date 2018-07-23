@@ -3,8 +3,8 @@ package com.molly.forecasting.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,21 +18,22 @@ import com.molly.forecasting.dto.StatementDTO;
 
 @Service
 public class StandardizedFinancialsService {
-	private static Logger logger = LogManager.getLogger();
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/*
 	 * Get Data from API URI: https://api.intrinio.com/financials/standardized
 	 */
-	public List<StatementDTO> getStatementByticker(String ticker) {
+	public List<StatementDTO> getStatementByticker(String ticker, String yearsConcatenated) {
 		RestTemplate restTemplate = new RestTemplate();
 		StandardizedFinancialsDTO financialsDTO = new StandardizedFinancialsDTO();
 		// don't forget to remove it
-		AuthenticateIntrinioService.setAuth("2b133ee185d14bf025458bde2348eb31", "15878798867d67e11397dd02587bb057");
+		AuthenticateIntrinioService.setAuth("b7a297bb22c7f89c3429cff7203fabb6", "e8d98b6f24154312aa369a9ed43888f7");
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 		httpHeaders.set("Authorization", AuthenticateIntrinioService.auth);
 		List<StatementDTO> statements = new ArrayList<>();
-		String years[] = { "2013", "2014", "2015", "2016", "2017" };
+		String years[] = yearsConcatenated.split(",");
 		String statementTypes[] = { "income_statement", "balance_sheet", "calculations" };
 		for (int k = 0; k < years.length; k++) {
 			StatementDTO statementDTO = new StatementDTO();
@@ -47,26 +48,20 @@ public class StandardizedFinancialsService {
 				statementDTO.setYear(years[k]);
 				for (int i = 0; i < financialsDTO.getData().size() - 1; i++) {
 					switch (financialsDTO.getData().get(i).getTag()) {
-					case "operatingrevenue":
-						statementDTO.setOperatingRevenue(financialsDTO.getData().get(i).getValue());
+					case "investmentsecuritiesinterestincome":
+						statementDTO.setInvestmentSecuritiesInterestIncome(financialsDTO.getData().get(i).getValue());
 						break;
 					case "totalrevenue":
 						statementDTO.setTotalRevenue(financialsDTO.getData().get(i).getValue());
 						break;
-					case "operatingcostofrevenue":
-						statementDTO.setOperatingCostOfRevenue(financialsDTO.getData().get(i).getValue());
+					case "totalinterestincome":
+						statementDTO.setTotalInterestIncome(financialsDTO.getData().get(i).getValue());
 						break;
-					case "totalcostofrevenue":
-						statementDTO.setTotalCostOfRevenue(financialsDTO.getData().get(i).getValue());
+					case "totalinterestexpense":
+						statementDTO.setTotalInterestExpense(financialsDTO.getData().get(i).getValue());
 						break;
-					case "totalgrossprofit":
-						statementDTO.setTotalGrossProfit(financialsDTO.getData().get(i).getValue());
-						break;
-					case "totaloperatingexpenses":
-						statementDTO.setTotalOperatingExpenses(financialsDTO.getData().get(i).getValue());
-						break;
-					case "totaloperatingincome":
-						statementDTO.setTotalOperatingIncome(financialsDTO.getData().get(i).getValue());
+					case "salariesandemployeebenefitsexpense":
+						statementDTO.setSalariesAndEmployeeBenefitsExpense(financialsDTO.getData().get(i).getValue());
 						break;
 					case "netincome":
 						statementDTO.setNetIncome(financialsDTO.getData().get(i).getValue());
@@ -74,14 +69,14 @@ public class StandardizedFinancialsService {
 					case "cashandequivalents":
 						statementDTO.setCashAndEquivalents(financialsDTO.getData().get(i).getValue());
 						break;
-					case "notereceivable":
-						statementDTO.setNoteReceivable(financialsDTO.getData().get(i).getValue());
+					case "totalliabilities":
+						statementDTO.setTotalLiabilities(financialsDTO.getData().get(i).getValue());
 						break;
-					case "netinventory":
-						statementDTO.setNetInventory(financialsDTO.getData().get(i).getValue());
+					case "totalcommonequity":
+						statementDTO.setTotalCommonequity(financialsDTO.getData().get(i).getValue());
 						break;
-					case "netppe":
-						statementDTO.setNetPPE(financialsDTO.getData().get(i).getValue());
+					case "totalequity":
+						statementDTO.setTotalEquity(financialsDTO.getData().get(i).getValue());
 						break;
 					case "totalassets":
 						statementDTO.setTotalAssets(financialsDTO.getData().get(i).getValue());

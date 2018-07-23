@@ -27,8 +27,24 @@
 									<option value="MS">Morgan Stanley Common Stock</option>
 								</select>
 								<br>
+								<P>Please Choose a year/s to compare</P>
+								<select id='multipleYearsSelect' multiple='multiple'>
+									<option value="2008">2008</option>
+									<option value="2009">2009</option>
+									<option value="2010">2010</option>
+									<option value="2011">2011</option>
+									<option value="2012">2012</option>
+									<option value="2013">2013</option>
+									<option value="2014">2014</option>
+									<option value="2015">2015</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+								</select> <br>
 								<button type="button" class="btn btn-primary" id="compare">Compare</button>
-								<button type="button" class="btn btn-primary" disabled="disabled" id="loading"><i class="fa fa-spinner fa-spin"></i> Loading...</button>
+								<button type="button" class="btn btn-primary"
+									disabled="disabled" id="loading">
+									<i class="fa fa-spinner fa-spin"></i> Loading...
+								</button>
 							</div>
 						</div>
 					</div>
@@ -46,15 +62,50 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<div id="statementDataTable">
-								
-							</div>
+							<div id="statementDataTable"></div>
 						</div>
 						<div class="panel-footer">
 							<div class="row"></div>
 						</div>
 					</div>
 					<!-- End Comparison Results-->
+					<div class="panel" id="graphResults">
+						<div class="panel-heading">
+							<h3 class="panel-title">Graph Comparison</h3>
+							<div class="right">
+								<button type="button" class="btn-toggle-collapse">
+									<i class="lnr lnr-chevron-up"></i>
+								</button>
+								<button type="button" class="btn-remove">
+									<i class="lnr lnr-cross"></i>
+								</button>
+							</div>
+						</div>
+						<div class="panel-body">
+							<select id="graphSelection">
+								<option data-display="Select">Please Choose an Attribute For Display The Graph</option>
+								<option value="investmentSecuritiesInterestIncome">Investment Securities Interest Income</option>
+								<option value="totalRevenue">Total Revenue</option>
+								<option value="totalInterestIncome">Total Interest Income</option>
+								<option value="totalInterestExpense">Total Interest Expense</option>
+								<option value="salariesAndEmployeeBenefitsExpense">Salaries And Employee Benefits Expense</option>
+								<option value="netIncome">Net Income</option>
+								<option value="cashAndEquivalents">Cash And Equivalents</option>
+								<option value="totalAssets">Total Assets</option>
+								<option value="totalLiabilities">Total Liabilities</option>
+								<option value="totalCommonequity">Total Common Equity</option>
+								<option value="totalEquity">Total Equity</option>
+								<option value="leverageRatio">Leverage Ratio</option>
+								<option value="nonControllingInterestSharingRatio">Non Controlling Interest Sharing Ratio</option>
+								<option value="divPayoutRatio">Div Payout Ratio</option>
+								<option value="augmentedPayoutRatio">Augmented Payout Ratio</option>
+							</select> <br /> <br />
+							<div id="containerForGraph"></div>
+						</div>
+						<div class="panel-footer">
+							<div class="row"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,6 +115,6 @@
 	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="/js/klorofil-common.js"></script>
-
+	<script src="/js/jquery.nice-select.min.js"></script>
 </body>
 </html>

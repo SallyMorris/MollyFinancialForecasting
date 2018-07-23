@@ -2,19 +2,17 @@ package com.molly.forecasting.dto;
 
 public class StatementDTO {
 	private String year;
-	private Double operatingRevenue;
+	private Double investmentSecuritiesInterestIncome;
 	private Double totalRevenue;
-	private Double operatingCostOfRevenue;
-	private Double totalCostOfRevenue;
-	private Double totalGrossProfit;
-	private Double totalOperatingExpenses;
-	private Double totalOperatingIncome;
+	private Double totalInterestIncome;
+	private Double totalInterestExpense;
+	private Double salariesAndEmployeeBenefitsExpense;	
 	private Double netIncome;
 	private Double cashAndEquivalents;
-	private Double noteReceivable;	
-	private Double netInventory;
-	private Double netPPE;
-	private Double totalAssets;
+	private Double totalAssets;	
+	private Double totalLiabilities;
+	private Double totalCommonequity;
+	private Double totalEquity;
 	private Double leverageRatio;
 	private Double nonControllingInterestSharingRatio;
 	private Double divPayoutRatio;
@@ -26,11 +24,11 @@ public class StatementDTO {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	public Double getOperatingRevenue() {
-		return operatingRevenue;
+	public Double getInvestmentSecuritiesInterestIncome() {
+		return investmentSecuritiesInterestIncome;
 	}
-	public void setOperatingRevenue(Double operatingRevenue) {
-		this.operatingRevenue = operatingRevenue;
+	public void setInvestmentSecuritiesInterestIncome(Double investmentSecuritiesInterestIncome) {
+		this.investmentSecuritiesInterestIncome = investmentSecuritiesInterestIncome;
 	}
 	public Double getTotalRevenue() {
 		return totalRevenue;
@@ -38,35 +36,23 @@ public class StatementDTO {
 	public void setTotalRevenue(Double totalRevenue) {
 		this.totalRevenue = totalRevenue;
 	}
-	public Double getOperatingCostOfRevenue() {
-		return operatingCostOfRevenue;
+	public Double getTotalInterestIncome() {
+		return totalInterestIncome;
 	}
-	public void setOperatingCostOfRevenue(Double operatingCostOfRevenue) {
-		this.operatingCostOfRevenue = operatingCostOfRevenue;
+	public void setTotalInterestIncome(Double totalInterestIncome) {
+		this.totalInterestIncome = totalInterestIncome;
 	}
-	public Double getTotalCostOfRevenue() {
-		return totalCostOfRevenue;
+	public Double getTotalInterestExpense() {
+		return totalInterestExpense;
 	}
-	public void setTotalCostOfRevenue(Double totalCostOfRevenue) {
-		this.totalCostOfRevenue = totalCostOfRevenue;
+	public void setTotalInterestExpense(Double totalInterestExpense) {
+		this.totalInterestExpense = totalInterestExpense;
 	}
-	public Double getTotalGrossProfit() {
-		return totalGrossProfit;
+	public Double getSalariesAndEmployeeBenefitsExpense() {
+		return salariesAndEmployeeBenefitsExpense;
 	}
-	public void setTotalGrossProfit(Double totalGrossProfit) {
-		this.totalGrossProfit = totalGrossProfit;
-	}
-	public Double getTotalOperatingExpenses() {
-		return totalOperatingExpenses;
-	}
-	public void setTotalOperatingExpenses(Double totalOperatingExpenses) {
-		this.totalOperatingExpenses = totalOperatingExpenses;
-	}
-	public Double getTotalOperatingIncome() {
-		return totalOperatingIncome;
-	}
-	public void setTotalOperatingIncome(Double totalOperatingIncome) {
-		this.totalOperatingIncome = totalOperatingIncome;
+	public void setSalariesAndEmployeeBenefitsExpense(Double salariesAndEmployeeBenefitsExpense) {
+		this.salariesAndEmployeeBenefitsExpense = salariesAndEmployeeBenefitsExpense;
 	}
 	public Double getNetIncome() {
 		return netIncome;
@@ -80,29 +66,29 @@ public class StatementDTO {
 	public void setCashAndEquivalents(Double cashAndEquivalents) {
 		this.cashAndEquivalents = cashAndEquivalents;
 	}
-	public Double getNoteReceivable() {
-		return noteReceivable;
-	}
-	public void setNoteReceivable(Double noteReceivable) {
-		this.noteReceivable = noteReceivable;
-	}
-	public Double getNetInventory() {
-		return netInventory;
-	}
-	public void setNetInventory(Double netInventory) {
-		this.netInventory = netInventory;
-	}
-	public Double getNetPPE() {
-		return netPPE;
-	}
-	public void setNetPPE(Double netPPE) {
-		this.netPPE = netPPE;
-	}
 	public Double getTotalAssets() {
 		return totalAssets;
 	}
 	public void setTotalAssets(Double totalAssets) {
 		this.totalAssets = totalAssets;
+	}
+	public Double getTotalLiabilities() {
+		return totalLiabilities;
+	}
+	public void setTotalLiabilities(Double totalLiabilities) {
+		this.totalLiabilities = totalLiabilities;
+	}
+	public Double getTotalCommonequity() {
+		return totalCommonequity;
+	}
+	public void setTotalCommonequity(Double totalCommonequity) {
+		this.totalCommonequity = totalCommonequity;
+	}
+	public Double getTotalEquity() {
+		return totalEquity;
+	}
+	public void setTotalEquity(Double totalEquity) {
+		this.totalEquity = totalEquity;
 	}
 	public Double getLeverageRatio() {
 		return leverageRatio;
@@ -129,6 +115,4 @@ public class StatementDTO {
 		this.augmentedPayoutRatio = augmentedPayoutRatio;
 	}
 	
-	
-
 }

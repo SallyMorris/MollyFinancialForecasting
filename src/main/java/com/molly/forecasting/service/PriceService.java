@@ -1,5 +1,13 @@
 package com.molly.forecasting.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,16 +20,11 @@ import com.molly.forecasting.dto.Price;
 import com.molly.forecasting.dto.PriceDTO;
 import com.molly.forecasting.naivebayes.DataSet;
 
-import java.util.*;
-import java.text.SimpleDateFormat;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 @Service
 public class PriceService {
 
-	private static Logger logger = LogManager.getLogger();
-
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	/*
 	 * Get Data from API URI: https://api.intrinio.com/prices
 	*/
@@ -30,7 +33,7 @@ public class PriceService {
 		PriceDTO priceDTO = new PriceDTO();
 		String pricesUrl = "https://api.intrinio.com/prices?identifier=" + ticker;
 		// don't forget to remove it
-		AuthenticateIntrinioService.setAuth("2b133ee185d14bf025458bde2348eb31", "15878798867d67e11397dd02587bb057");
+		AuthenticateIntrinioService.setAuth("b7a297bb22c7f89c3429cff7203fabb6", "e8d98b6f24154312aa369a9ed43888f7");
 		logger.info("GET: " + pricesUrl);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
