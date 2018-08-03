@@ -33,7 +33,7 @@ public class PriceService {
 		PriceDTO priceDTO = new PriceDTO();
 		String pricesUrl = "https://api.intrinio.com/prices?identifier=" + ticker;
 		// don't forget to remove it
-		AuthenticateIntrinioService.setAuth("b7a297bb22c7f89c3429cff7203fabb6", "e8d98b6f24154312aa369a9ed43888f7");
+		AuthenticateIntrinioService.setAuth("74c4a79e01d5ce91d12f0bf1f18e50fd", "e5f0961185335d7bf79acd8efd846e18");
 		logger.info("GET: " + pricesUrl);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
