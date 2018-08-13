@@ -8,81 +8,38 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 <!-- MAIN CSS -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<style type="text/css">
+#top, #bottom {
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 50%;
+}
 
-<!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
+#top {
+	top: 0;
+	background-color: orange;
+}
 
+#bottom {
+	bottom: 0;
+	background-color: black;
+}
+</style>
 </head>
 
 <body>
 	<div class="wrapper">
 		<!-- END NAVBAR -->
-		<div class="column col-xs-9">
-			<!-- NAVBAR -->
-			<nav class="navbar navbar-default">
-				<div class="brand">
-					<a href="#"><img src="/img/logo-dark.png" alt="Klorofil Logo"
-						class="img-responsive logo"></a>
-				</div>
-			</nav>
-			<br>
-			<!-- OVERVIEW -->
-			<div class="panel panel-headline">
-				<div class="panel-body">
-					<div class="row">
-						<h1>Molly Financial Forecasting WEB TOOL</h1>
-					</div>
-				</div>
-			</div>
-			<!-- END OVERVIEW -->
-			<!-- OVERVIEW -->
-			<div class="panel panel-headline">
-				<div class="panel-heading">
-					<h2 class="panel-title">About</h2>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<h2>Molly Financial Forecasting</h2>
-						<h2>In WEB tool for financial statements</h2>
-					</div>
-				</div>
-			</div>
+		<div class="column col-xs-8" id="top">
+			<h2>Molly's Financial Forecasting Web Tool</h2>
 		</div>
-		<!-- END OVERVIEW -->
-
+		<div class="column col-xs-8" id="bottom">
+			<h1>About</h1>
+			<h3>Molly Financial Forecasting</h3>
+		</div>
 		<!-- sidebar -->
-		<div class="column col-xs-3" id="sidebar">
-			<div class="panel">
-				<div class="panel-heading">
-					<h3 class="panel-title">Inputs</h3>
-				</div>
-				<div class="panel-body">
-					<input class="form-control" placeholder="text field" type="text">
-					<br> <input class="form-control" value="asecret"
-						type="password"> <br>
-					<textarea class="form-control" placeholder="textarea" rows="4"></textarea>
-					<br> <select class="form-control">
-						<option value="cheese">Cheese</option>
-						<option value="tomatoes">Tomatoes</option>
-						<option value="mozarella">Mozzarella</option>
-						<option value="mushrooms">Mushrooms</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="onions">Onions</option>
-					</select> <br> <label class="fancy-checkbox"> <input
-						type="checkbox"> <span>Fancy Checkbox 1</span>
-					</label> <label class="fancy-checkbox"> <input type="checkbox">
-						<span>Fancy Checkbox 2</span>
-					</label> <label class="fancy-checkbox"> <input type="checkbox">
-						<span>Fancy Checkbox 3</span>
-					</label> <br> <label class="fancy-radio"> <input name="gender"
-						value="male" type="radio"> <span><i></i>Male</span>
-					</label> <label class="fancy-radio"> <input name="gender"
-						value="female" type="radio"> <span><i></i>Female</span>
-					</label>
-				</div>
-			</div>
-		</div>
+		<div class="column col-xs-4" id="sidebar"></div>
 
 	</div>
 

@@ -20,4 +20,12 @@ public class UserHistoryServiceImpl implements UserHistoryService {
 
 	}
 
+	@Override
+	public UserHistory getLastLogin(Integer id) {
+//		userHistoryRepository.
+		return null;
+	}
+	
+	
+
 }

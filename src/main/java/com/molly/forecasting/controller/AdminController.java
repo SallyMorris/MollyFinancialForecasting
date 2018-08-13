@@ -27,8 +27,9 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
+		
 		modelAndView.addObject("userName",
-				"Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+				user.getName() + " " + user.getLastName() );
 		modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
@@ -38,7 +39,7 @@ public class AdminController {
 	public ModelAndView test() {
 		ModelAndView modelAndView = new ModelAndView("login/index");
 		userHistoryService.getAllUsersHistory().forEach(item -> {
-			System.out.println(item.getUser().getUserSearchs());
+			System.out.println(item);
 		});
 		return modelAndView;
 	}

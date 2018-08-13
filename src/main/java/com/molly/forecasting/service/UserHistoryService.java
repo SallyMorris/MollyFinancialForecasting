@@ -6,4 +6,5 @@ import com.molly.forecasting.entity.UserHistory;
 
 public interface UserHistoryService {
 	public List<UserHistory> getAllUsersHistory();
+	public UserHistory getLastLogin(Integer id);
 }

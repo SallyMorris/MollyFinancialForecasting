@@ -1,5 +1,6 @@
 package com.molly.forecasting.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -47,10 +48,13 @@ public class User {
 	@Column(name = "last_name")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
-
+	
 	@Column(name = "active")
 	private int active;
 
+	@Column(name = "date_registered")
+	private Timestamp dateRegistered;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
@@ -122,4 +126,13 @@ public class User {
 		this.userSearchs = userSearchs;
 	}
 
+	public Timestamp getDateRegistered() {
+		return dateRegistered;
+	}
+
+	public void setDateRegistered(Timestamp dateRegistered) {
+		this.dateRegistered = dateRegistered;
+	}
+
+	
 }

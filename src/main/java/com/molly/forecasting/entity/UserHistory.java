@@ -24,9 +24,6 @@ public class UserHistory {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@Column(name = "date_registered")
-	private Timestamp dateRegistered;
-
 	@Column(name = "date_login")
 	private Timestamp dateLogin;
 
@@ -49,14 +46,6 @@ public class UserHistory {
 		this.user = user;
 	}
 
-	public Timestamp getDateRegistered() {
-		return dateRegistered;
-	}
-
-	public void setDateRegistered(Timestamp dateRegistered) {
-		this.dateRegistered = dateRegistered;
-	}
-
 	public Timestamp getDateLogin() {
 		return dateLogin;
 	}
@@ -75,8 +64,9 @@ public class UserHistory {
 
 	@Override
 	public String toString() {
-		return "UserHistory [id=" + id + ", user=" + user + ", dateRegistered=" + dateRegistered + ", dateLogin="
-				+ dateLogin + ", dateLogout=" + dateLogout + "]";
+		return "UserHistory [id=" + id + ", user=" + user + ", dateLogin=" + dateLogin + ", dateLogout=" + dateLogout
+				+ "]";
 	}
+	
 
 }
